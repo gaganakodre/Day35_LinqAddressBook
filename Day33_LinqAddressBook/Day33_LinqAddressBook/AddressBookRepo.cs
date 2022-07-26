@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Day33_LinqAddressBook
@@ -45,6 +46,20 @@ namespace Day33_LinqAddressBook
                 Console.WriteLine(ex.Message);
             }
 
+        }
+        
+        public static void GetCountByAddressBookType(List<AddressBookInformation> list)
+        {
+            var countData = list.AsEnumerable().GroupBy(BookType => BookType.AddressBookType).
+                Select(BookType => new
+                {
+                    BookType = BookType.Key,
+                    BookTypeCount = BookType.Count()
+                });
+            foreach (var contactlist in countData)
+            {
+                Console.WriteLine("AddressBook Type =" + contactlist.BookType + " --> " + "AddressBook_Count = " + contactlist.BookTypeCount);
+            }
         }
     }
    
