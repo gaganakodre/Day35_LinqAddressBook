@@ -91,30 +91,48 @@ namespace Day33_LinqAddressBook
         }
         public static void RetirveNameAndType(List<AddressBookInformation> list)
         {
-            var countData = list.AsEnumerable().GroupBy(BookType => BookType.AddressBookType).
+            try
+            {
+                var countData = list.AsEnumerable().GroupBy(BookType => BookType.AddressBookType).
                 Select(BookType => new
                 {
                     BookType = BookType.Key,
                     //BookTypeCount = BookType.FirstName
                 });
-            foreach (var contactlist in countData)
-            {
-                Console.WriteLine("AddressBook Type =" + contactlist.BookType);
-            }
-            var NameData = list.AsEnumerable().GroupBy(BookType => BookType.FirstName).
-                Select(BookType => new
+                foreach (var contactlist in countData)
                 {
-                    BookType = BookType.Key,
+                    Console.WriteLine("AddressBook Type =" + contactlist.BookType);
+                }
+                var NameData = list.AsEnumerable().GroupBy(BookType => BookType.FirstName).
+                    Select(BookType => new
+                    {
+                        BookType = BookType.Key,
                     //BookTypeCount = BookType.FirstName
-                });
-            foreach (var contactlist in NameData)
-            {
-                Console.WriteLine("FirstName =" + contactlist.BookType);
+                    });
+                foreach (var contactlist in NameData)
+                {
+                    Console.WriteLine("FirstName =" + contactlist.BookType);
+                }
+                
             }
-
-
-
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+        public static void AddingDataToAddressBookwithsameNameButDiffType(List<AddressBookInformation> list)
+        {
+            try
+            {
+                list.Add(new AddressBookInformation() { ID = 1, FirstName = "Shree", LastName = "Gowri", Address = "Rtc Layout", City = "Bengaluru", State = "Karnataka", Zip = "4232", PhoneNumber = "12345", Email = "TVfc@gmail.com", AddressBookName = "AddressBook1", AddressBookType = "Family" });
+                list.Add(new AddressBookInformation() { ID = 1, FirstName = "Shree", LastName = "Gowri", Address = "Rtc Layout", City = "Bengaluru", State = "Karnataka", Zip = "4232", PhoneNumber = "12345", Email = "TVfc@gmail.com", AddressBookName = "AddressBook1", AddressBookType = "Friends" });
+                Program.RetriveAllData(list);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }   
     }
 }
 
