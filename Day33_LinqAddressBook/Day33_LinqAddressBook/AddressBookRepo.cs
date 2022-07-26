@@ -47,7 +47,20 @@ namespace Day33_LinqAddressBook
             }
 
         }
-        
+        public static void GetCountByCity(List<AddressBookInformation> list)
+        {
+            var countData = list.AsEnumerable().GroupBy(city => city.City).
+                Select(city => new
+                {
+                    Cityties = city.Key,
+                    cityCount = city.Count()
+                });
+            foreach (var contactlist in countData)
+            {
+                Console.WriteLine("City =" + contactlist.Cityties + " --> " +" City_Count =" + contactlist.cityCount);
+            }
+        }
+
         public static void GetCountByAddressBookType(List<AddressBookInformation> list)
         {
             var countData = list.AsEnumerable().GroupBy(BookType => BookType.AddressBookType).
