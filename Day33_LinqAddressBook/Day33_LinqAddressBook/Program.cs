@@ -6,7 +6,7 @@
         {
             List<AddressBookInformation> list = new List<AddressBookInformation>();
             Console.WriteLine("AddressBook Information");
-            Console.WriteLine("1.RetriveAllInfoFromAddressBook\n2.Retrive based on city\nupdating the data");
+            Console.WriteLine("1.RetriveAllInfoFromAddressBook\n2.Retrive based on city\n3.updating the data\n4.deleting data using city name");
             int choice=Convert.ToInt32(Console.ReadLine());
             switch(choice)
             {
@@ -26,6 +26,10 @@
                     AddressBookRepo.UpdateData(list);
                     Console.WriteLine("Aftre updating");
                     AddingDataToAddressBook(list);
+                    break;
+                case 4:
+                    
+                    AddressBookRepo.DeleteData(list);
                     break;
             }
         }
@@ -53,7 +57,7 @@
                 list.Add(new AddressBookInformation() { ID = 4, FirstName = "jadadeesha", LastName = "luhur", Address = "RCB Layout", City = "VijayaWada", State = "AndraPradesh", Zip = "4234", PhoneNumber = "12345", Email = "TVfg@gmail.com", AddressBookName = "AddressBook2", AddressBookType = "Family" });
                 list.Add(new AddressBookInformation() { ID = 5, FirstName = "kalavathi", LastName = "jaga", Address = "HSDG Layout", City = "VijayaWada", State = "Andrapradesh", Zip = "4235", PhoneNumber = "12345", Email = "TVfh@gmail.com", AddressBookName = "AddressBook2", AddressBookType = "Friends" });
                 list.Add(new AddressBookInformation() { ID = 6, FirstName = "Swati", LastName = "koduru", Address = "DDJDJ Layout", City = "Hydrabad", State = "Telangana", Zip = "4236", PhoneNumber = "12345", Email = "TVfshg@gmail.com", AddressBookName = "AddressBook1", AddressBookType = "Professional" });
-                list.Add(new AddressBookInformation() { ID = 7, FirstName = "sheshank", LastName = "YK", Address = "jayanagara", City = "Bengaluru", State = "Karnataka", Zip = "4238", PhoneNumber = "12345", Email = "Thsgva@gmail.com", AddressBookName = "AddressBook1", AddressBookType = "Family" });
+                list.Add(new AddressBookInformation() { ID = 7, FirstName = "sheshank", LastName = "YK", Address = "jayanagara", City = "hubli", State = "Karnataka", Zip = "4238", PhoneNumber = "12345", Email = "Thsgva@gmail.com", AddressBookName = "AddressBook1", AddressBookType = "Family" });
                 RetriveAllData(list);
             }
             catch(Exception ex)
