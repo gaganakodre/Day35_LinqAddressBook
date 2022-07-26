@@ -15,5 +15,10 @@ namespace Day33_LinqAddressBook
             var res1 = (from p in list where p.City.Equals("Bengaluru") && (p.State.Equals("Karnataka")) select p).ToList();
             Program.RetriveAllData(res1);
         }
+        public static void UpdateData(List<AddressBookInformation> list)
+        {
+         (from p in list where p.ID == 3 select p).ToList().ForEach(x => x.City = "Davanagere");
+        }
     }
+   
 }
